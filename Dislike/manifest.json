@@ -1,0 +1,33 @@
+{
+  "name": "Show Dislikes",
+  "description": "This extension will show the number of dislikes for a Youtube video",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": [
+    "*://www.youtube.com/watch*"
+  ],
+  "browser_action": {
+    "icons": {
+      "16": "images/down16.png",
+      "48": "images/down48.png",
+      "128": "images/down128.png"
+    },
+    "default_title": "Show Dislikes",
+    "default_popup": "options.html"
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.youtube.com/watch*",
+        "<all_urls>"
+      ],
+      "js": [
+        "show_dislikes.js"
+      ]
+    }
+  ]
+}
